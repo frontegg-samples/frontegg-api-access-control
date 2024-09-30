@@ -27,13 +27,13 @@ This project demonstrates how to implement API access control using Frontegg's e
 ## Setup
 
 1. Install dependencies:
-   ```
+   ```shell
    npm install
    ```
 
 2. Create a `.env` file in the root directory and add the following environment variables:
 
-   ```
+   ```shell
    PDP_HOST=http://localhost:8181
    PORT=3000
    JWT_SECRET='-----BEGIN PUBLIC KEY-----
@@ -44,7 +44,7 @@ This project demonstrates how to implement API access control using Frontegg's e
    ```
    
    - `PDP_HOST`: Policy decision point host
-   - `PORT`: Port of the application (default 3000)
+   - `PORT`: Application port (default 3000)
    - `JWT_SECRET`: JWT token public key (Frontegg portal => Authentication => JWT => JWT Signature)
 
 3. Start the server:
@@ -69,7 +69,7 @@ This project demonstrates how to implement API access control using Frontegg's e
    
    * Start the engine:   
 
-   ```
+   ```shell
    docker run -p 8181:8181 \
    -e FRONTEGG_CLIENT_ID=<YOUR_CLIENT_ID> \
    -e FRONTEGG_CLIENT_CREDENTIALS_OAUTH_CLIENT_ID=<YOUR_PERSONAL_TOKEN_CLIENT_ID> \
@@ -88,14 +88,16 @@ The server will start on `http://localhost:3000` (or the `PORT` specified in you
    https://[your_environment_domain].frontegg.com/oauth/portal
 
 2. Validate API route with entitlements:
-   ```
+
+   GET `/data` endpoint sample:
+   ```shell
    curl http://localhost:3000/data -H 'authorization: Bearer <token>'
    ```
 
 ## How to query Entitlement Engine without SDK
 If SDK is not available for your framework, you can query it directly via API
 
-```
+```json
 POST /v1/data/e10s/routes/is_entitled_to_input_route
 {
   "input": {
@@ -114,7 +116,7 @@ POST /v1/data/e10s/routes/is_entitled_to_input_route
 ```
 
 Response:
-```
+```json
 {
 	"result": {
 		"result": boolean;
