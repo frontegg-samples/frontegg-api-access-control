@@ -61,10 +61,13 @@ This project demonstrates how to implement API access control using Frontegg's e
       `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_SECRET` - FrontEgg portal Personal token secret 
 
    * Pull the latest version of the entitlement engine
-   ```
-   docker pull frontegg/entitlements-agent:latest
-   ```
-   * Start the engine
+
+      ```
+      docker pull frontegg/entitlements-agent:latest
+      ```
+   
+   * Start the engine   
+
    ```
    docker run -p 8181:8181 \
    -e FRONTEGG_CLIENT_ID=<YOUR_CLIENT_ID> \
@@ -130,4 +133,3 @@ Response:
    `PLAN_EXPIRED` - Plan that enabled that route is expired for user/tenant.  
    `ROUTE_DENIED` - Route denied for the user/tenant. 
 
-   
