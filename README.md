@@ -2,15 +2,15 @@
 
 This project demonstrates how to implement API access control using Frontegg's entitlements agent.
 
-![alt text](images/diagram.png)
+![API Access Control Diagram](images/diagram.png)
 
-# Table of Contents
+## Table of Contents
 
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Usage](#usage)
-- [How to query Entitlement Engine without SDK](#how-to-query-entitlement-engine-without-sdk)
+- [How to Query Entitlement Engine Without SDK](#how-to-query-entitlement-engine-without-sdk)
 
 ## Features
 
@@ -43,16 +43,16 @@ This project demonstrates how to implement API access control using Frontegg's e
    -----END PUBLIC KEY-----'
    ```
    
-   - `PDP_HOST` - policy decision point host.  
-   - `PORT` - port of the application (default 3000)
-   - `JWT_SECRET` - JWT token public key. FrontEgg portal => Authentication => JWT => JWT Signature
+   - `PDP_HOST`: Policy decision point host
+   - `PORT`: Port of the application (default 3000)
+   - `JWT_SECRET`: JWT token public key (Frontegg portal => Authentication => JWT => JWT Signature)
 
 3. Start the server:
    ```
    npm start
    ```
 
-4. [Create API polices](https://docs.frontegg.com/docs/creating-your-first-route)
+4. [Create API policies](https://docs.frontegg.com/docs/creating-your-first-route)
 5. [Configure and start FrontEgg Entitlements Agent](https://docs.frontegg.com/docs/configuring-and-running-the-engine)
    
    * [Get your FrontEgg credentials](https://docs.frontegg.com/docs/configuring-and-running-the-engine#step-2-run-the-agent-as-a-docker-container)
@@ -61,13 +61,13 @@ This project demonstrates how to implement API access control using Frontegg's e
      - `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_CLIENT_ID`: FrontEgg portal Personal token clientId.
      - `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_SECRET`: FrontEgg portal Personal token secret 
 
-   * Pull the latest version of the entitlement engine
+   * Pull the latest version of the entitlement engine:
 
       ```
       docker pull frontegg/entitlements-agent:latest
       ```
    
-   * Start the engine   
+   * Start the engine:   
 
    ```
    docker run -p 8181:8181 \
@@ -78,18 +78,16 @@ This project demonstrates how to implement API access control using Frontegg's e
    frontegg/entitlements-agent
    ```
 
-
 ## Usage
 
 The server will start on `http://localhost:3000` (or the `PORT` specified in your environment variables).
 
 1. [Generate M2M token](https://docs.frontegg.com/docs/time-bound-token-expiration) 
 
-Use hosted admin portal if don't have embeeded one to your application. 
-https://[your_environment_domain].frontegg.com/oauth/portal
+   Use the hosted admin portal if you don't have an embedded one in your application: 
+   https://[your_environment_domain].frontegg.com/oauth/portal
 
-
-2. Validate API route with entitlements
+2. Validate API route with entitlements:
    ```
    curl http://localhost:3000/data -H 'authorization: Bearer <token>'
    ```
@@ -128,9 +126,9 @@ Response:
 
 * `justification` - if `result` is `false`:  
    
-   - `MISSING_FEATURE` - User/Tenant is not entitled to the feature of this route.    
-   - `MISSING_PERMISSION` - User/Tenant is missing permission to access this route.   
-   - `MISSING_ROUTE` - Route is not configured.   
-   - `PLAN_EXPIRED` - Plan that enabled that route is expired for user/tenant.  
-   - `ROUTE_DENIED` - Route denied for the user/tenant. 
+   - `MISSING_FEATURE`: User/Tenant is not entitled to the feature of this route.    
+   - `MISSING_PERMISSION`: User/Tenant is missing permission to access this route.   
+   - `MISSING_ROUTE`: Route is not configured.   
+   - `PLAN_EXPIRED`: Plan that enabled that route is expired for user/tenant.  
+   - `ROUTE_DENIED`: Route denied for the user/tenant. 
 
