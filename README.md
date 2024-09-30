@@ -10,6 +10,7 @@ This project demonstrates how to implement API access control using Frontegg's e
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
 - [Usage](#usage)
+- [How to query Entitlement Engine without SDK](#how-to-query-entitlement-engine-without-sdk)
 
 ## Features
 
@@ -54,10 +55,11 @@ This project demonstrates how to implement API access control using Frontegg's e
 5. [Configure and start FrontEgg Entitlements Agent](https://docs.frontegg.com/docs/configuring-and-running-the-engine)
    
    * [Get your FrontEgg credentials](https://docs.frontegg.com/docs/configuring-and-running-the-engine#step-2-run-the-agent-as-a-docker-container)
-      
-      `FRONTEGG_CLIENT_ID` - FrontEgg environment ClientId
-      `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_CLIENT_ID` - FrontEgg portal Personal token clientId
-      `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_SECRET` - FrontEgg portal Personal token secret
+
+      `FRONTEGG_CLIENT_ID` - FrontEgg environment ClientId. 
+      `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_CLIENT_ID` - FrontEgg portal Personal token clientId.  
+      `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_SECRET` - FrontEgg portal Personal token secret 
+
    * Pull the latest version of the entitlement engine
    ```
    docker pull frontegg/entitlements-agent:latest
@@ -120,10 +122,12 @@ Response:
 }
 ```
 
-* `justification` - if `result` is `false`:
+* `justification` - if `result` is `false`:  
+   
+   `MISSING_FEATURE` - User/Tenant is not entitled to the feature of this route.    
+   `MISSING_PERMISSION` - User/Tenant is missing permission to access this route.   
+   `MISSING_ROUTE` - Route is not configured.   
+   `PLAN_EXPIRED` - Plan that enabled that route is expired for user/tenant.  
+   `ROUTE_DENIED` - Route denied for the user/tenant. 
 
-   MISSING_FEATURE - User/Tenant is not entitled to the feature of this route
-   MISSING_PERMISSION - User/Tenant is missing permission to access this route
-   MISSING_ROUTE - Route is not configured
-   PLAN_EXPIRED - Plan that enabled that route is expired for user/tenant
-   ROUTE_DENIED - Route denied for the user/tenant
+   
