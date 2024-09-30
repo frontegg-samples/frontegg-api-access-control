@@ -97,7 +97,7 @@ The server will start on `http://localhost:3000` (or the `PORT` specified in you
 ## How to query Entitlement Engine without SDK
 If SDK is not available for your framework, you can query it directly via API
 
-```json
+```javascript
 POST /v1/data/e10s/routes/is_entitled_to_input_route
 {
   "input": {
@@ -116,7 +116,7 @@ POST /v1/data/e10s/routes/is_entitled_to_input_route
 ```
 
 Response:
-```json
+```javascript
 {
 	"result": {
 		"result": boolean;
