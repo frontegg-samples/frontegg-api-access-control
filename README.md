@@ -43,8 +43,9 @@ This project demonstrates how to implement API access control using Frontegg's e
    -----END PUBLIC KEY-----'
    ```
    
-   `PDP_HOST` - policy decision point host.  
-   `JWT_SECRET` - JWT token public key. FrontEgg portal => Authentication => JWT => JWT Signature
+   - `PDP_HOST` - policy decision point host.  
+   - `PORT` - port of the application (default 3000)
+   - `JWT_SECRET` - JWT token public key. FrontEgg portal => Authentication => JWT => JWT Signature
 
 3. Start the server:
    ```
@@ -56,9 +57,9 @@ This project demonstrates how to implement API access control using Frontegg's e
    
    * [Get your FrontEgg credentials](https://docs.frontegg.com/docs/configuring-and-running-the-engine#step-2-run-the-agent-as-a-docker-container)
 
-      `FRONTEGG_CLIENT_ID` - FrontEgg environment ClientId. 
-      `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_CLIENT_ID` - FrontEgg portal Personal token clientId.  
-      `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_SECRET` - FrontEgg portal Personal token secret 
+     - `FRONTEGG_CLIENT_ID`: FrontEgg environment ClientId.
+     - `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_CLIENT_ID`: FrontEgg portal Personal token clientId.
+     - `FRONTEGG_CLIENT_CREDENTIALS_OAUTH_SECRET`: FrontEgg portal Personal token secret 
 
    * Pull the latest version of the entitlement engine
 
@@ -127,9 +128,9 @@ Response:
 
 * `justification` - if `result` is `false`:  
    
-   `MISSING_FEATURE` - User/Tenant is not entitled to the feature of this route.    
-   `MISSING_PERMISSION` - User/Tenant is missing permission to access this route.   
-   `MISSING_ROUTE` - Route is not configured.   
-   `PLAN_EXPIRED` - Plan that enabled that route is expired for user/tenant.  
-   `ROUTE_DENIED` - Route denied for the user/tenant. 
+   - `MISSING_FEATURE` - User/Tenant is not entitled to the feature of this route.    
+   - `MISSING_PERMISSION` - User/Tenant is missing permission to access this route.   
+   - `MISSING_ROUTE` - Route is not configured.   
+   - `PLAN_EXPIRED` - Plan that enabled that route is expired for user/tenant.  
+   - `ROUTE_DENIED` - Route denied for the user/tenant. 
 
