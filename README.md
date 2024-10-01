@@ -53,7 +53,7 @@ This project demonstrates how to implement API access control using Frontegg's e
    ```
 
 4. [Create API policies](https://docs.frontegg.com/docs/creating-your-first-route)
-5. [Configure and start FrontEgg Entitlements Agent](https://docs.frontegg.com/docs/configuring-and-running-the-engine)
+5. [Configure and start FrontEgg Entitlements Agent](https://docs.frontegg.com/docs/configuration)
    
    * [Get your FrontEgg credentials](https://docs.frontegg.com/docs/configuring-and-running-the-engine#step-2-run-the-agent-as-a-docker-container)
 
@@ -132,5 +132,5 @@ Response:
    - `MISSING_PERMISSION`: User/Tenant is missing permission to access this route.   
    - `MISSING_ROUTE`: Route is not configured.   
    - `PLAN_EXPIRED`: Plan that enabled that route is expired for user/tenant.  
-   - `ROUTE_DENIED`: Route denied for the user/tenant. 
+   - `ROUTE_DENIED`: Route is configured with Block policy. 
 
